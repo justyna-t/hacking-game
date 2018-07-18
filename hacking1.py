@@ -7,6 +7,8 @@
 print("DEBUG MODE")
 print("1 ATTEMPT(S) LEFT\n")
 # display password
+print("PROVIDE\nSETTING\nCANTINA\nCUTTING\nHUNTERS\nSURVIVE")
+print("HEARING\nHUNTING\nREALIZE\nNOTHING\nOVERLAP\nFINDING\nPUTTING\n")
 # prompt for guess
 # end game
 #   display faulure outcom
