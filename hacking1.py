@@ -15,5 +15,7 @@ print("HEARING\nHUNTING\nREALIZE\nNOTHING\nOVERLAP\nFINDING\nPUTTING\n")
 raw_input("Enter password >")
 
 # end game
-#   display faulure outcom
+#   display faulure outcome
+print("LOGIN FAILURE - TERMINAL LOCKED\n")
+print("PLEASE CONTACT AN ADMINISTRATOR\n")
 #   prompt for end
