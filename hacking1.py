@@ -19,3 +19,4 @@ raw_input("Enter password >")
 print("LOGIN FAILURE - TERMINAL LOCKED\n")
 print("PLEASE CONTACT AN ADMINISTRATOR\n")
 #   prompt for end
+raw_input("PRESS ENTER TO EXIT>")
