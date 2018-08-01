@@ -89,16 +89,40 @@ guess = window.input_string("Enter password >", 0, line_y)
 
 # end game
 #   clear window
+window.clear()
 #   display faulure outcome
 #       display guess
+line_y = 0
+window.draw_string(guess, 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #       display blank line
+window.draw_string("", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #       display failure line 2
+window.draw_string("LOGIN FAILURE - TERMINAL LOCKED", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #       display blank line
+window.draw_string("", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #       display failure line 3
+window.draw_string("PLEASE CONTACT AN ADMINISTRATOR", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #       display blank line
-# print("LOGIN FAILURE - TERMINAL LOCKED\n")
-# print("PLEASE CONTACT AN ADMINISTRATOR\n")
+window.draw_string("", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 #   prompt for end
-# raw_input("PRESS ENTER TO EXIT")
+window.input_string("PRESS ENTER TO EXIT", 0, line_y)
 #   close window
 window.close()
