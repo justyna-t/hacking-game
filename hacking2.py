@@ -96,37 +96,55 @@ window.clear()
 window_height = window.get_height()
 line_y = window_height - 7 * string_high
 line_y //= 2
-
-window.draw_string(guess, 0, line_y)
+#           compute x coordinate
+window_width = window.get_width()
+line_x = window_width - window.get_string_width(guess)
+line_x //= 2
+window.draw_string(guess, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-window.draw_string("", 0, line_y)
+string = ""
+line_x = window_width - window.get_string_width(string)
+line_x //= 2
+window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display failure line 2
-window.draw_string("LOGIN FAILURE - TERMINAL LOCKED", 0, line_y)
+string = "LOGIN FAILURE - TERMINAL LOCKED"
+line_x = window_width - window.get_string_width(string)
+line_x //= 2
+window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-window.draw_string("", 0, line_y)
+window.draw_string("", line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display failure line 3
-window.draw_string("PLEASE CONTACT AN ADMINISTRATOR", 0, line_y)
+string = "PLEASE CONTACT AN ADMINISTRATOR"
+line_x = window_width - window.get_string_width(string)
+line_x //= 2
+window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-window.draw_string("", 0, line_y)
+string = ""
+line_x = window_width - window.get_string_width(string)
+line_x //= 2
+window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #   prompt for end
-window.input_string("PRESS ENTER TO EXIT", 0, line_y)
+string = "PRESS ENTER TO EXIT"
+line_x = window_width - window.get_string_width(string)
+line_x //= 2
+window.input_string(string, line_x, line_y)
 #   close window
 window.close()
