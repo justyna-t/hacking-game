@@ -90,9 +90,13 @@ guess = window.input_string("Enter password >", 0, line_y)
 # end game
 #   clear window
 window.clear()
-#   display faulure outcome
+#   display failure outcome
 #       display guess
-line_y = 0
+#           compute y coordinate
+window_height = window.get_height()
+line_y = window_height - 7 * string_high
+line_y //= 2
+
 window.draw_string(guess, 0, line_y)
 window.update()
 sleep(0.3)
