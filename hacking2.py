@@ -15,12 +15,16 @@ window.set_font_size(18)
 window.set_font_color('green')
 
 # display header
-window.draw_string("DEBUG MODE", 0, 0)
+line_y = 0
+string_high = window.get_font_height()
+window.draw_string("DEBUG MODE", 0, line_y)
+window.update()
+line_y += string_high
+sleep(0.3)
+window.draw_string("1 ATTEMPT(S) LEFT", 0, line_y)
 window.update()
 sleep(0.3)
-window.draw_string("1 ATTEMPT(S) LEFT", 0, 20)
-window.update()
-sleep(0.3)
+line_y += string_high
 
 
 # display password
