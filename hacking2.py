@@ -9,10 +9,10 @@ from uagame import Window
 from time import sleep
 # create window
 window = Window("Hacking", 600, 500)
-window.set_bg_color("black")
 window.set_font_name("couriernew")
 window.set_font_size(18)
-window.set_font_color('green')
+window.set_font_color("green")
+window.set_bg_color("black")
 
 # display header
 line_y = 0
@@ -41,6 +41,10 @@ window.update()
 sleep(0.3)
 line_y += string_high
 window.draw_string("CANTINA", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("CUTTING", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
@@ -85,14 +89,14 @@ window.update()
 sleep(0.3)
 line_y += string_high
 # prompt for guess
-guess = window.input_string("Enter password >", 0, line_y)
+guess = window.input_string("ENTER PASSWORD >", 0, line_y)
 
 # end game
 #   clear window
 window.clear()
 #   display failure outcome
 #       display guess
-#           compute y coordinate
+#           compute y coordinate for every line
 window_height = window.get_height()
 line_y = window_height - 7 * string_high
 line_y //= 2
@@ -100,51 +104,52 @@ line_y //= 2
 window_width = window.get_width()
 line_x = window_width - window.get_string_width(guess)
 line_x //= 2
+
 window.draw_string(guess, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-string = ""
-line_x = window_width - window.get_string_width(string)
-line_x //= 2
-window.draw_string(string, line_x, line_y)
+window.draw_string("", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display failure line 2
+#           compute x coordinate
 string = "LOGIN FAILURE - TERMINAL LOCKED"
 line_x = window_width - window.get_string_width(string)
 line_x //= 2
+
 window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-window.draw_string("", line_x, line_y)
+window.draw_string("", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display failure line 3
+#           compute x coordinate
 string = "PLEASE CONTACT AN ADMINISTRATOR"
 line_x = window_width - window.get_string_width(string)
 line_x //= 2
+
 window.draw_string(string, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #       display blank line
-string = ""
-line_x = window_width - window.get_string_width(string)
-line_x //= 2
-window.draw_string(string, line_x, line_y)
+window.draw_string("", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
 #   prompt for end
+#           compute x coordinate
 string = "PRESS ENTER TO EXIT"
 line_x = window_width - window.get_string_width(string)
 line_x //= 2
+
 window.input_string(string, line_x, line_y)
 #   close window
 window.close()
