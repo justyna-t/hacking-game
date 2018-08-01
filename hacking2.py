@@ -101,3 +101,4 @@ guess = window.input_string("Enter password >", 0, line_y)
 #   prompt for end
 # raw_input("PRESS ENTER TO EXIT")
 #   close window
+window.close()
