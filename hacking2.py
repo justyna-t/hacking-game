@@ -10,12 +10,15 @@ from time import sleep
 # create window
 window = Window("Hacking", 600, 500)
 window.set_bg_color("black")
+window.set_font_name("couriernew")
+window.set_font_size(18)
+window.set_font_color('green')
 
 # display header
 window.draw_string("DEBUG MODE", 0, 0)
 window.update()
 sleep(0.3)
-window.draw_string("1 ATTEMPT(S) LEFT\n", 0, 10)
+window.draw_string("1 ATTEMPT(S) LEFT", 0, 20)
 window.update()
 sleep(0.3)
 
