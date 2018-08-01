@@ -6,14 +6,19 @@
 # Use uagame module
 # Documentation for uagame is in file 'uagame_documentation.txt'
 from uagame import Window
+from time import sleep
 # create window
 window = Window("Hacking", 600, 500)
-window.set_bg_color('black')
-
+window.set_bg_color("black")
 
 # display header
-print("DEBUG MODE")
-print("1 ATTEMPT(S) LEFT\n")
+window.draw_string("DEBUG MODE", 0, 0)
+window.update()
+sleep(0.3)
+window.draw_string("1 ATTEMPT(S) LEFT\n", 0, 10)
+window.update()
+sleep(0.3)
+
 
 # display password
 print("PROVIDE\nSETTING\nCANTINA\nCUTTING\nHUNTERS\nSURVIVE")
