@@ -25,12 +25,65 @@ window.draw_string("1 ATTEMPT(S) LEFT", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
+window.draw_string("", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 
 
 # display password
-# print("PROVIDE\nSETTING\nCANTINA\nCUTTING\nHUNTERS\nSURVIVE")
-# print("HEARING\nHUNTING\nREALIZE\nNOTHING\nOVERLAP\nFINDING\nPUTTING\n")
-
+window.draw_string("PROVIDE", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("SETTING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("CANTINA", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("HUNTERS", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("SURVIVE", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("HEARING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("HUNTING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("REALIZE", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("NOTHING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("OVERLAP", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("FINDING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("PUTTING", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
+window.draw_string("", 0, line_y)
+window.update()
+sleep(0.3)
+line_y += string_high
 # prompt for guess
 # raw_input("Enter password >")
 
