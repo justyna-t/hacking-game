@@ -3,7 +3,13 @@
 # computer passwords. The player is allowed 1 attempt to guess the password.
 # The game indicates that the player failed to guess the password correctly.
 
+# Use uagame module
+# Documentation for uagame is in file 'uagame_documentation.txt'
+from uagame import Window
 # create window
+window = Window("Hacking", 600, 500)
+window.set_bg_color('black')
+
 
 # display header
 print("DEBUG MODE")
