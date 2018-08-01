@@ -85,7 +85,7 @@ window.update()
 sleep(0.3)
 line_y += string_high
 # prompt for guess
-# raw_input("Enter password >")
+guess = window.input_string("Enter password >", 0, line_y)
 
 # end game
 #   clear window
