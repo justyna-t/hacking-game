@@ -21,11 +21,11 @@ sleep(0.3)
 
 
 # display password
-print("PROVIDE\nSETTING\nCANTINA\nCUTTING\nHUNTERS\nSURVIVE")
-print("HEARING\nHUNTING\nREALIZE\nNOTHING\nOVERLAP\nFINDING\nPUTTING\n")
+# print("PROVIDE\nSETTING\nCANTINA\nCUTTING\nHUNTERS\nSURVIVE")
+# print("HEARING\nHUNTING\nREALIZE\nNOTHING\nOVERLAP\nFINDING\nPUTTING\n")
 
 # prompt for guess
-raw_input("Enter password >")
+# raw_input("Enter password >")
 
 # end game
 #   clear window
@@ -36,8 +36,8 @@ raw_input("Enter password >")
 #       display blank line
 #       display failure line 3
 #       display blank line
-print("LOGIN FAILURE - TERMINAL LOCKED\n")
-print("PLEASE CONTACT AN ADMINISTRATOR\n")
+# print("LOGIN FAILURE - TERMINAL LOCKED\n")
+# print("PLEASE CONTACT AN ADMINISTRATOR\n")
 #   prompt for end
-raw_input("PRESS ENTER TO EXIT")
+# raw_input("PRESS ENTER TO EXIT")
 #   close window
