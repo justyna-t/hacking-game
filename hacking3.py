@@ -1,7 +1,8 @@
-# Hacking Version 2
+# Hacking Version 3
 # This is a text-based password guessing game that displays a list of potential
 # computer passwords. The player is allowed 1 attempt to guess the password.
-# The game indicates that the player failed to guess the password correctly.
+# If the guess is correct the game display a success outcome, if the guess is
+# incorrect the game display a failure outcome.
 
 # Use uagame module
 # Documentation for uagame is in file 'uagame_documentation.txt'
