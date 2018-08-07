@@ -114,13 +114,21 @@ window.draw_string("", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
+
 #       display failure line 2
+if guess == "HUNTING":
+    outcome_line2 = "EXITING DEBUG MODE"
+    outcome_line3 = "LOGIN SUCCESSFUL - WELCOME BACK"
+    outcome_line4 = "PRESS ENTER TO CONTINUE"
+else:
+    outcome_line2 = "LOGIN FAILURE - TERMINAL LOCKED"
+    outcome_line3 = "PLEASE CONTACT AN ADMINISTRATOR"
+    outcome_line4 = "PRESS ENTER TO EXIT"
 #           compute x coordinate
-string = "LOGIN FAILURE - TERMINAL LOCKED"
-line_x = window_width - window.get_string_width(string)
+line_x = window_width - window.get_string_width(outcome_line2)
 line_x //= 2
 
-window.draw_string(string, line_x, line_y)
+window.draw_string(outcome_line2, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
@@ -131,11 +139,10 @@ sleep(0.3)
 line_y += string_high
 #       display failure line 3
 #           compute x coordinate
-string = "PLEASE CONTACT AN ADMINISTRATOR"
-line_x = window_width - window.get_string_width(string)
+line_x = window_width - window.get_string_width(outcome_line3)
 line_x //= 2
 
-window.draw_string(string, line_x, line_y)
+window.draw_string(outcome_line3, line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
@@ -146,10 +153,9 @@ sleep(0.3)
 line_y += string_high
 #   prompt for end
 #           compute x coordinate
-string = "PRESS ENTER TO EXIT"
-line_x = window_width - window.get_string_width(string)
+line_x = window_width - window.get_string_width(outcome_line4)
 line_x //= 2
 
-window.input_string(string, line_x, line_y)
+window.input_string(outcome_line4, line_x, line_y)
 #   close window
 window.close()
