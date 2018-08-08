@@ -45,68 +45,41 @@ guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
 #   clear window
 window.clear()
 #   display outcome
-#   for outcome in outcome list
-#       display guess
+#       for outcome in outcome list
 #           compute y coordinate for every line
 window_height = window.get_height()
 line_y = window_height - 7 * string_high
 line_y //= 2
-#           compute x coordinate
-window_width = window.get_width()
-line_x = window_width - window.get_string_width(guess)
-line_x //= 2
-
-window.draw_string(guess, line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-#       display blank line
-window.draw_string("", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-
-#       display outcome line 2
+outcome_list = [guess, ""]
 if guess == "HUNTING":
-    outcome_line2 = "EXITING DEBUG MODE"
-    outcome_line3 = "LOGIN SUCCESSFUL - WELCOME BACK"
-    outcome_line4 = "PRESS ENTER TO CONTINUE"
+    successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
+ BACK", ""]
+    outcome_list += successful_outcome
+    prompt = "PRESS ENTER TO CONTINUE"
+
 else:
-    outcome_line2 = "LOGIN FAILURE - TERMINAL LOCKED"
-    outcome_line3 = "PLEASE CONTACT AN ADMINISTRATOR"
-    outcome_line4 = "PRESS ENTER TO EXIT"
-#           compute x coordinate
-line_x = window_width - window.get_string_width(outcome_line2)
-line_x //= 2
+    failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
+AN ADMINISTRATOR", ""]
+    outcome_list += failure_outcome
+    prompt = "PRESS ENTER TO EXIT"
 
-window.draw_string(outcome_line2, line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-#       display blank line
-window.draw_string("", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-#       display outcome line 3
+for outcome in outcome_list:
 #           compute x coordinate
-line_x = window_width - window.get_string_width(outcome_line3)
-line_x //= 2
+    window_width = window.get_width()
+    line_x = window_width - window.get_string_width(outcome)
+    line_x //= 2
 
-window.draw_string(outcome_line3, line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-#       display blank line
-window.draw_string("", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
+    window.draw_string(outcome, line_x, line_y)
+    window.update()
+    sleep(0.3)
+    line_y += string_high
+
 #   prompt for end
 #           compute x coordinate
-line_x = window_width - window.get_string_width(outcome_line4)
+line_x = window_width - window.get_string_width(prompt)
 line_x //= 2
 
-window.input_string(outcome_line4, line_x, line_y)
+window.input_string(prompt, line_x, line_y)
+
 #   close window
 window.close()
