@@ -16,6 +16,7 @@ window.set_font_color("green")
 window.set_bg_color("black")
 
 # display header
+#    for header line in header
 line_x = 0
 line_y = 0
 string_high = window.get_font_height()
@@ -34,6 +35,7 @@ line_y += string_high
 
 
 # display password
+#   for password in password list
 window.draw_string("PROVIDE", line_x, line_y)
 window.update()
 sleep(0.3)
@@ -96,7 +98,8 @@ guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
 # end game
 #   clear window
 window.clear()
-#   display failure outcome
+#   display outcome
+#   for outcome in outcome list
 #       display guess
 #           compute y coordinate for every line
 window_height = window.get_height()
@@ -117,7 +120,7 @@ window.update()
 sleep(0.3)
 line_y += string_high
 
-#       display failure line 2
+#       display outcome line 2
 if guess == "HUNTING":
     outcome_line2 = "EXITING DEBUG MODE"
     outcome_line3 = "LOGIN SUCCESSFUL - WELCOME BACK"
@@ -139,7 +142,7 @@ window.draw_string("", line_x, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
-#       display failure line 3
+#       display outcome line 3
 #           compute x coordinate
 line_x = window_width - window.get_string_width(outcome_line3)
 line_x //= 2
