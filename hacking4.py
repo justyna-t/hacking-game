@@ -29,62 +29,15 @@ for header_line in header:
 
 # display password
 #   for password in password list
-window.draw_string("PROVIDE", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("SETTING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("CANTINA", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("CUTTING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("HUNTERS", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("SURVIVE", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("HEARING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("HUNTING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("REALIZE", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("NOTHING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("OVERLAP", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("FINDING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("PUTTING", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
+password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
+                 "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
+                 "OVERLAP", "FINDING", "PUTTING", ""]
+for password in password_list:
+    window.draw_string(password, line_x, line_y)
+    window.update()
+    sleep(0.3)
+    line_y += string_high
+
 # prompt for guess
 guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
 
