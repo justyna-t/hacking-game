@@ -95,7 +95,7 @@ guess = window.input_string("ENTER PASSWORD >", 0, line_y)
 # end game
 #   clear window
 window.clear()
-#   display failure outcome
+#   display outcome
 #       display guess
 #           compute y coordinate for every line
 window_height = window.get_height()
@@ -116,7 +116,7 @@ window.update()
 sleep(0.3)
 line_y += string_high
 
-#       display failure line 2
+#       display outcome line 2
 if guess == "HUNTING":
     outcome_line2 = "EXITING DEBUG MODE"
     outcome_line3 = "LOGIN SUCCESSFUL - WELCOME BACK"
@@ -138,7 +138,7 @@ window.draw_string("", 0, line_y)
 window.update()
 sleep(0.3)
 line_y += string_high
-#       display failure line 3
+#       display outcome line 3
 #           compute x coordinate
 line_x = window_width - window.get_string_width(outcome_line3)
 line_x //= 2
