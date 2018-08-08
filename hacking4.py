@@ -16,23 +16,16 @@ window.set_font_color("green")
 window.set_bg_color("black")
 
 # display header
-#    for header line in header
 line_x = 0
 line_y = 0
 string_high = window.get_font_height()
-window.draw_string("DEBUG MODE", line_x, line_y)
-window.update()
-line_y += string_high
-sleep(0.3)
-window.draw_string("1 ATTEMPT(S) LEFT", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-window.draw_string("", line_x, line_y)
-window.update()
-sleep(0.3)
-line_y += string_high
-
+#    for header line in header
+header = ["DEBUG MODE", "1 ATTEMPT(S) LEFT", ""]
+for header_line in header:
+    window.draw_string(header_line, line_x, line_y)
+    window.update()
+    line_y += string_high
+    sleep(0.3)
 
 # display password
 #   for password in password list
