@@ -8,6 +8,7 @@
 # Documentation for uagame is in file 'uagame_documentation.txt'
 from uagame import Window
 from time import sleep
+
 # create window
 window = Window("Hacking", 600, 500)
 window.set_font_name("couriernew")
@@ -38,12 +39,16 @@ for password in password_list:
     sleep(0.3)
     line_y += string_high
 
+# choose password
+password = password_list[7]
+
 # prompt for guess
 guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
 
 # end game
 #   clear window
 window.clear()
+
 #   display outcome
 #       for outcome in outcome list
 #           compute y coordinate for every line
@@ -51,7 +56,7 @@ window_height = window.get_height()
 line_y = window_height - 7 * string_high
 line_y //= 2
 outcome_list = [guess, ""]
-if guess == "HUNTING":
+if guess == password:
     successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
  BACK", ""]
     outcome_list += successful_outcome
