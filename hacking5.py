@@ -52,8 +52,14 @@ password = password_list[7]
 
 # prompt for guess
 guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
+line_y += string_high
 attempts -= 1
 #   get guess until it is not equal password and attempts left greater than 0
+while guess != password and attempts > 0 :
+    window.draw_string("%d ATTEMPT(S) LEFT" % attempts, 0, string_high)
+    guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
+    line_y += string_high
+    attempts -= 1
 
 # end game
 #   clear window
