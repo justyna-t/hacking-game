@@ -57,6 +57,11 @@ attempts -= 1
 #   get guess until it is not equal password and attempts left greater than 0
 while guess != password and attempts > 0 :
     window.draw_string("%d ATTEMPT(S) LEFT" % attempts, 0, string_high)
+    if attempts == 1:
+        message = "*** LOCKOUT WARNING ***"
+        x = window_width - window.get_string_width(message)
+        y = window_height - string_high
+        window.draw_string(message, x, y)
     guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
     line_y += string_high
     attempts -= 1
