@@ -24,7 +24,8 @@ line_x = 0
 line_y = 0
 string_high = window.get_font_height()
 #    for header line in header
-header = ["DEBUG MODE", "1 ATTEMPT(S) LEFT", ""]
+attempts = 4
+header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
 for header_line in header:
     window.draw_string(header_line, line_x, line_y)
     window.update()
@@ -47,6 +48,7 @@ password = password_list[7]
 
 # prompt for guess
 guess = window.input_string("ENTER PASSWORD >", line_x, line_y)
+attempts -= 1
 #   get guess until it is not equal password and attempts left greater than 0
 
 # end game
