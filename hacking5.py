@@ -19,6 +19,10 @@ window.set_font_size(18)
 window.set_font_color("green")
 window.set_bg_color("black")
 
+# get window height and width
+window_height = window.get_height()
+window_width = window.get_width()
+
 # display header
 line_x = 0
 line_y = 0
@@ -58,7 +62,6 @@ window.clear()
 #   display outcome
 #       for outcome in outcome list
 #           compute y coordinate for every line
-window_height = window.get_height()
 line_y = window_height - 7 * string_high
 line_y //= 2
 outcome_list = [guess, ""]
@@ -76,7 +79,6 @@ AN ADMINISTRATOR", ""]
 
 for outcome in outcome_list:
 #           compute x coordinate
-    window_width = window.get_width()
     line_x = window_width - window.get_string_width(outcome)
     line_x //= 2
 
