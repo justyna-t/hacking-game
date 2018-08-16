@@ -84,7 +84,21 @@ def get_guesses(window, password, location, attempts_left):
         guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
-    
+
+
+def create_outcome(window, guess, password):
+    if guess == password:
+        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
+ BACK", ""]
+        prompt = "PRESS ENTER TO CONTINUE"
+        return ([guess, ""] + successful_outcome, prompt)
+
+    else:
+        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
+AN ADMINISTRATOR", ""]
+        prompt = "PRESS ENTER TO EXIT"
+        return ([guess, ""] + failure_outcome, prompt)
+
 
 def display_outcome(window, outcome):
     line_y = window.get_height() - 7 * window.get_font_height()
@@ -98,38 +112,18 @@ def display_outcome(window, outcome):
 
 
 def end_game(window, guess, password):
-    #   clear window
+#   clear window
     window.clear()
+    outcome = create_outcome(window, guess, password)
+    line_y = display_outcome(window, outcome[0])
 
-    # create outcome
-    string_high = window.get_font_height()
-    window_height = window.get_height()
-    window_width = window.get_width()
-    outcome_list = [guess, ""]
-    if guess == password:
-        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
- BACK", ""]
-        outcome_list += successful_outcome
-        prompt = "PRESS ENTER TO CONTINUE"
-
-    else:
-        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
-AN ADMINISTRATOR", ""]
-        outcome_list += failure_outcome
-        prompt = "PRESS ENTER TO EXIT"
-
-    line_y = display_outcome(window, outcome_list)
-
-    #   prompt for end
-    #           compute x coordinate
-    line_x = window_width - window.get_string_width(prompt)
+#   prompt for end
+    line_x = window.get_width() - window.get_string_width(outcome[1])
     line_x //= 2
+    window.input_string(outcome[1], line_x, line_y)
 
-    window.input_string(prompt, line_x, line_y)
-
-    #   close window
+#   close window
     window.close()
-
 
 
 main()
