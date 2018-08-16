@@ -84,22 +84,27 @@ def get_guesses(window, password, location, attempts_left):
         guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
+    
+
+def display_outcome(window, outcome):
+    line_y = window.get_height() - 7 * window.get_font_height()
+    line_y //= 2
+    for line in outcome:
+        line_x = window.get_width() - window.get_string_width(line)
+        line_x //= 2
+        display_line(window, line, [line_x, line_y])
+        line_y += window.get_font_height()
+    return line_y
 
 
 def end_game(window, guess, password):
-    # get window height and width
-    window_height = window.get_height()
-    window_width = window.get_width()
-    string_high = window.get_font_height()
-
     #   clear window
     window.clear()
 
-    #   display outcome
-    #       for outcome in outcome list
-    #           compute y coordinate for every line
-    line_y = window_height - 7 * string_high
-    line_y //= 2
+    # create outcome
+    string_high = window.get_font_height()
+    window_height = window.get_height()
+    window_width = window.get_width()
     outcome_list = [guess, ""]
     if guess == password:
         successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
@@ -113,15 +118,7 @@ AN ADMINISTRATOR", ""]
         outcome_list += failure_outcome
         prompt = "PRESS ENTER TO EXIT"
 
-    for outcome in outcome_list:
-    #           compute x coordinate
-        line_x = window_width - window.get_string_width(outcome)
-        line_x //= 2
-
-        window.draw_string(outcome, line_x, line_y)
-        window.update()
-        sleep(0.3)
-        line_y += string_high
+    line_y = display_outcome(window, outcome_list)
 
     #   prompt for end
     #           compute x coordinate
