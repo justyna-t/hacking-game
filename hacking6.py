@@ -52,16 +52,25 @@ def display_password_list(window, location):
     for password in password_list:
         display_line(window, password, location)
 
-    # choose password
+#   choose password
     return password_list[7]
+
 
 def prompt_user(window, prompt, location):
     guess = window.input_string(prompt, location[0], location[1])
     location[1] += window.get_font_height()
     return guess
 
+def check_warning(window, attempts_left):
+    if attempts_left == 1:
+        message = "*** LOCKOUT WARNING ***"
+        x = window.get_width() - window.get_string_width(message)
+        y = window.get_height() - window.get_font_height()
+        window.draw_string(message, x, y)
+
+
 def get_guesses(window, password, location, attempts_left):
-    #   prompt for guess
+#   prompt for guess
     string_high = window.get_font_height()
     prompt = "ENTER PASSWORD >"
     guess = prompt_user(window, prompt, location)
@@ -69,19 +78,9 @@ def get_guesses(window, password, location, attempts_left):
 
     while guess != password and attempts_left > 0 :
         window.draw_string(str(attempts_left), 0, string_high)
-
-    #       check warning
-        if attempts_left == 1:
-            # get window height and width
-            window_height = window.get_height()
-            window_width = window.get_width()
-            message = "*** LOCKOUT WARNING ***"
-            x = window_width - window.get_string_width(message)
-            y = window_height - string_high
-            window.draw_string(message, x, y)
-
-    #       prompt for guess
-        guess = guess = prompt_user(window, prompt, location)
+        check_warning(window, attempts_left)
+#       prompt for guess
+        guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
 
