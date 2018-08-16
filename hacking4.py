@@ -69,7 +69,7 @@ AN ADMINISTRATOR", ""]
     prompt = "PRESS ENTER TO EXIT"
 
 for outcome in outcome_list:
-#           compute x coordinate
+    # compute x coordinate
     window_width = window.get_width()
     line_x = window_width - window.get_string_width(outcome)
     line_x //= 2
