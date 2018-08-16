@@ -91,8 +91,7 @@ def end_game(window, guess, password):
     line_y = display_outcome(window, outcome[0])
 
 #   prompt for end
-    line_x = window.get_width() - window.get_string_width(outcome[1])
-    line_x //= 2
+    line_x = count_line_x(window, outcome[1])
     prompt_user(window, outcome[1], [line_x, line_y])
 
 #   close window
@@ -103,11 +102,16 @@ def display_outcome(window, outcome):
     line_y = window.get_height() - 7 * window.get_font_height()
     line_y //= 2
     for line in outcome:
-        line_x = window.get_width() - window.get_string_width(line)
-        line_x //= 2
+        line_x = count_line_x(window, line)
         display_line(window, line, [line_x, line_y])
         line_y += window.get_font_height()
     return line_y
+
+
+def count_line_x(window, string):
+    line_x = window.get_width() - window.get_string_width(string)
+    line_x //= 2
+    return line_x
 
 
 def create_outcome(window, guess, password):
