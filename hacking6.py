@@ -13,7 +13,10 @@ from uagame import Window
 from time import sleep
 
 def main():
+    location = [0, 0]
+    attempts = 4
     window = create_window()
+    display_header(window, location, attempts)
 
 def create_window():
     window = Window("Hacking", 600, 500)
@@ -22,5 +25,15 @@ def create_window():
     window.set_font_color("green")
     window.set_bg_color("black")
     return window
+
+def display_header(window, location, attempts):
+    string_high = window.get_font_height()
+    #    for header line in header
+    header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
+    for header_line in header:
+        window.draw_string(header_line, location[0], location[1])
+        window.update()
+        location[1] += string_high
+        sleep(0.3)
 
 main()
