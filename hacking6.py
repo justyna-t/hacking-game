@@ -55,12 +55,16 @@ def display_password_list(window, location):
     # choose password
     return password_list[7]
 
+def prompt_user(window, prompt, location):
+    guess = window.input_string(prompt, location[0], location[1])
+    location[1] += window.get_font_height()
+    return guess
 
 def get_guesses(window, password, location, attempts_left):
     #   prompt for guess
     string_high = window.get_font_height()
-    guess = window.input_string("ENTER PASSWORD >", location[0], location[1])
-    location[1] += string_high
+    prompt = "ENTER PASSWORD >"
+    guess = prompt_user(window, prompt, location)
     attempts_left -= 1
 
     while guess != password and attempts_left > 0 :
@@ -77,8 +81,7 @@ def get_guesses(window, password, location, attempts_left):
             window.draw_string(message, x, y)
 
     #       prompt for guess
-        guess = window.input_string("ENTER PASSWORD >", location[0], location[1])
-        location[1] += string_high
+        guess = guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
 
