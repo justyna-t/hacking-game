@@ -116,9 +116,10 @@ def end_game(window, guess, password):
     line_y = display_outcome(window, outcome[0])
 
 #   prompt for end
+
     line_x = window.get_width() - window.get_string_width(outcome[1])
     line_x //= 2
-    window.input_string(outcome[1], line_x, line_y)
+    prompt_user(window, outcome[1], [line_x, line_y])
 
 #   close window
     window.close()
