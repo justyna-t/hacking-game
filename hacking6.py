@@ -32,17 +32,17 @@ def create_window():
     return window
 
 
+def display_header(window, location, attempts):
+    header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
+    for header_line in header:
+        display_line(window, header_line, location)
+
+
 def display_line(window, string, location):
     window.draw_string(string, location[0], location[1])
     window.update()
     location[1] += window.get_font_height()
     sleep(0.3)
-
-
-def display_header(window, location, attempts):
-    header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
-    for header_line in header:
-        display_line(window, header_line, location)
 
 
 def display_password_list(window, location):
@@ -54,20 +54,6 @@ def display_password_list(window, location):
 
 #   choose password
     return password_list[7]
-
-
-def prompt_user(window, prompt, location):
-    guess = window.input_string(prompt, location[0], location[1])
-    location[1] += window.get_font_height()
-    return guess
-
-def check_warning(window, attempts_left):
-    if attempts_left == 1:
-        message = "*** LOCKOUT WARNING ***"
-        x = window.get_width() - window.get_string_width(message)
-        y = window.get_height() - window.get_font_height()
-        window.draw_string(message, x, y)
-
 
 def get_guesses(window, password, location, attempts_left):
 #   prompt for guess
@@ -84,18 +70,33 @@ def get_guesses(window, password, location, attempts_left):
     return guess
 
 
-def create_outcome(window, guess, password):
-    if guess == password:
-        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
- BACK", ""]
-        prompt = "PRESS ENTER TO CONTINUE"
-        return ([guess, ""] + successful_outcome, prompt)
+def prompt_user(window, prompt, location):
+    guess = window.input_string(prompt, location[0], location[1])
+    location[1] += window.get_font_height()
+    return guess
 
-    else:
-        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
-AN ADMINISTRATOR", ""]
-        prompt = "PRESS ENTER TO EXIT"
-        return ([guess, ""] + failure_outcome, prompt)
+
+def check_warning(window, attempts_left):
+    if attempts_left == 1:
+        message = "*** LOCKOUT WARNING ***"
+        x = window.get_width() - window.get_string_width(message)
+        y = window.get_height() - window.get_font_height()
+        window.draw_string(message, x, y)
+
+
+def end_game(window, guess, password):
+#   clear window
+    window.clear()
+    outcome = create_outcome(window, guess, password)
+    line_y = display_outcome(window, outcome[0])
+
+#   prompt for end
+    line_x = window.get_width() - window.get_string_width(outcome[1])
+    line_x //= 2
+    prompt_user(window, outcome[1], [line_x, line_y])
+
+#   close window
+    window.close()
 
 
 def display_outcome(window, outcome):
@@ -109,20 +110,18 @@ def display_outcome(window, outcome):
     return line_y
 
 
-def end_game(window, guess, password):
-#   clear window
-    window.clear()
-    outcome = create_outcome(window, guess, password)
-    line_y = display_outcome(window, outcome[0])
+def create_outcome(window, guess, password):
+    if guess == password:
+        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
+ BACK", ""]
+        prompt = "PRESS ENTER TO CONTINUE"
+        return ([guess, ""] + successful_outcome, prompt)
 
-#   prompt for end
-
-    line_x = window.get_width() - window.get_string_width(outcome[1])
-    line_x //= 2
-    prompt_user(window, outcome[1], [line_x, line_y])
-
-#   close window
-    window.close()
+    else:
+        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
+AN ADMINISTRATOR", ""]
+        prompt = "PRESS ENTER TO EXIT"
+        return ([guess, ""] + failure_outcome, prompt)
 
 
 main()
