@@ -15,10 +15,11 @@ from time import sleep
 
 def main():
     location = [0, 0]
-    attempts = 4
+    attempts_left = 4
     window = create_window()
-    display_header(window, location, attempts)
+    display_header(window, location, attempts_left)
     password = display_password_list(window, location)
+    guess = get_guesses(window, password, location, attempts_left)
 
 
 def create_window():
@@ -53,6 +54,33 @@ def display_password_list(window, location):
 
     # choose password
     return password_list[7]
+
+
+def get_guesses(window, password, location, attempts_left):
+    #   prompt for guess
+    string_high = window.get_font_height()
+    guess = window.input_string("ENTER PASSWORD >", location[0], location[1])
+    location[1] += string_high
+    attempts_left -= 1
+
+    while guess != password and attempts_left > 0 :
+        window.draw_string(str(attempts_left), 0, string_high)
+
+    #       check warning
+        if attempts_left == 1:
+            # get window height and width
+            window_height = window.get_height()
+            window_width = window.get_width()
+            message = "*** LOCKOUT WARNING ***"
+            x = window_width - window.get_string_width(message)
+            y = window_height - string_high
+            window.draw_string(message, x, y)
+
+    #       prompt for guess
+        guess = window.input_string("ENTER PASSWORD >", location[0], location[1])
+        location[1] += string_high
+        attempts_left -= 1
+    return guess
 
 
 main()
