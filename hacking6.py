@@ -55,16 +55,17 @@ def display_password_list(window, location):
 #   choose password
     return password_list[7]
 
+
 def get_guesses(window, password, location, attempts_left):
-#   prompt for guess
+    # prompt for guess
     prompt = "ENTER PASSWORD >"
     guess = prompt_user(window, prompt, location)
     attempts_left -= 1
 
-    while guess != password and attempts_left > 0 :
+    while guess != password and attempts_left > 0:
         window.draw_string(str(attempts_left), 0, window.get_font_height())
         check_warning(window, attempts_left)
-#       prompt for guess
+        # prompt for guess
         guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
@@ -85,16 +86,16 @@ def check_warning(window, attempts_left):
 
 
 def end_game(window, guess, password):
-#   clear window
+    # clear window
     window.clear()
     outcome = create_outcome(window, guess, password)
     line_y = display_outcome(window, outcome[0])
 
-#   prompt for end
+    # prompt for end
     line_x = count_line_x(window, outcome[1])
     prompt_user(window, outcome[1], [line_x, line_y])
 
-#   close window
+    # close window
     window.close()
 
 
@@ -116,14 +117,14 @@ def count_line_x(window, string):
 
 def create_outcome(window, guess, password):
     if guess == password:
-        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - WELCOME\
- BACK", ""]
+        successful_outcome = ["EXITING DEBUG MODE", "", "LOGIN SUCCESSFUL - \
+WELCOME BACK", ""]
         prompt = "PRESS ENTER TO CONTINUE"
         return ([guess, ""] + successful_outcome, prompt)
 
     else:
-        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE CONTACT \
-AN ADMINISTRATOR", ""]
+        failure_outcome = ["LOGIN FAILURE - TERMINAL LOCKED", "", "PLEASE \
+CONTACT AN ADMINISTRATOR", ""]
         prompt = "PRESS ENTER TO EXIT"
         return ([guess, ""] + failure_outcome, prompt)
 
