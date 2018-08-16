@@ -33,10 +33,9 @@ def create_window():
 
 
 def display_line(window, string, location):
-    string_high = window.get_font_height()
     window.draw_string(string, location[0], location[1])
     window.update()
-    location[1] += string_high
+    location[1] += window.get_font_height()
     sleep(0.3)
 
 
@@ -72,13 +71,12 @@ def check_warning(window, attempts_left):
 
 def get_guesses(window, password, location, attempts_left):
 #   prompt for guess
-    string_high = window.get_font_height()
     prompt = "ENTER PASSWORD >"
     guess = prompt_user(window, prompt, location)
     attempts_left -= 1
 
     while guess != password and attempts_left > 0 :
-        window.draw_string(str(attempts_left), 0, string_high)
+        window.draw_string(str(attempts_left), 0, window.get_font_height())
         check_warning(window, attempts_left)
 #       prompt for guess
         guess = prompt_user(window, prompt, location)
