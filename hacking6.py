@@ -17,6 +17,7 @@ def main():
     attempts = 4
     window = create_window()
     display_header(window, location, attempts)
+    password = display_password_list(window, location)
 
 def create_window():
     window = Window("Hacking", 600, 500)
@@ -28,12 +29,24 @@ def create_window():
 
 def display_header(window, location, attempts):
     string_high = window.get_font_height()
-    #    for header line in header
     header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
     for header_line in header:
         window.draw_string(header_line, location[0], location[1])
         window.update()
         location[1] += string_high
         sleep(0.3)
+
+def display_password_list(window, location):
+    string_high = window.get_font_height()
+    password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
+                     "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
+                     "OVERLAP", "FINDING", "PUTTING", ""]
+    for password in password_list:
+        window.draw_string(password, location[0], location[1])
+        window.update()
+        location[1] += string_high
+        sleep(0.3)
+    # choose password
+    return password_list[7]
 
 main()
