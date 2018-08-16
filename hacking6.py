@@ -12,12 +12,14 @@
 from uagame import Window
 from time import sleep
 
+
 def main():
     location = [0, 0]
     attempts = 4
     window = create_window()
     display_header(window, location, attempts)
     password = display_password_list(window, location)
+
 
 def create_window():
     window = Window("Hacking", 600, 500)
@@ -27,26 +29,30 @@ def create_window():
     window.set_bg_color("black")
     return window
 
-def display_header(window, location, attempts):
+
+def display_line(window, string, location):
     string_high = window.get_font_height()
+    window.draw_string(string, location[0], location[1])
+    window.update()
+    location[1] += string_high
+    sleep(0.3)
+
+
+def display_header(window, location, attempts):
     header = ["DEBUG MODE", "%d ATTEMPT(S) LEFT" % attempts, ""]
     for header_line in header:
-        window.draw_string(header_line, location[0], location[1])
-        window.update()
-        location[1] += string_high
-        sleep(0.3)
+        display_line(window, header_line, location)
+
 
 def display_password_list(window, location):
-    string_high = window.get_font_height()
     password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
                      "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
                      "OVERLAP", "FINDING", "PUTTING", ""]
     for password in password_list:
-        window.draw_string(password, location[0], location[1])
-        window.update()
-        location[1] += string_high
-        sleep(0.3)
+        display_line(window, password, location)
+
     # choose password
     return password_list[7]
+
 
 main()
