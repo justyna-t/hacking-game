@@ -57,7 +57,7 @@ line_y += string_high
 attempts -= 1
 
 #   get guess until it is not equal password and attempts left greater than 0
-while guess != password and attempts > 0 :
+while guess != password and attempts > 0:
     window.draw_string(str(attempts), 0, string_high)
 
 #       check warning
@@ -95,7 +95,7 @@ AN ADMINISTRATOR", ""]
     prompt = "PRESS ENTER TO EXIT"
 
 for outcome in outcome_list:
-#           compute x coordinate
+#   compute x coordinate
     line_x = window_width - window.get_string_width(outcome)
     line_x //= 2
 
