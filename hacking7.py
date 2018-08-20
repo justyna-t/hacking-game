@@ -146,8 +146,7 @@ def check_warning(window, attempts_left):
 
 
 def display_hint(window, password, guess, location):
-    # Display the game hint after an incorrect password is entered and return
-    # the location of the line below the displayed hint.
+    # Display the game hint after an incorrect password is entered
     # - window is the Window to display in
     # - password is the str correct password
     # - guess is the player's guess str
