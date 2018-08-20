@@ -58,6 +58,23 @@ def display_line(window, string, location):
     sleep(0.3)
 
 
+def create_password_list():
+    # Create random selection of words for password list and return this list
+    all_words = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
+                 "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
+                 "OVERLAP", "FINDING", "PUTTING", "CAPTURE", "VIRTUAL",
+                 "NETWORK", "SUSTAIN", "THEATRE", "DIAMOND", "RUNNING",
+                 "GRIZZLY", "VISIBLE", "LOGICAL", "AIRLINE", "GATEWAY",
+                 "VILLAGE", "FITNESS", "TRAFFIC", "WEEKEND", "BILLION",
+                 "MISSION", "WRITTEN", "VEHICLE", "ADDRESS", "WELCOME"]
+    password_list = []
+    while len(password_list) < 13:
+        password = all_words[randint(0, len(all_words) - 1)]
+        password_list.append(password)
+        all_words.remove(password)
+    return password_list
+
+
 def display_password_list(window, location):
     # Display the game passwords, update the location for the next text and
     #   return the correct password
