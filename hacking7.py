@@ -66,7 +66,7 @@ def display_password_list(window, location):
     # password should be displayed and it should be updated for the next output
     password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
                      "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
-                     "OVERLAP", "FINDING", "PUTTING", ""]
+                     "OVERLAP", "FINDING", "PUTTING"]
     size = 20
     for password in password_list:
         password = embed_password(password, size)
