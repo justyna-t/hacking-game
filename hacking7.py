@@ -74,6 +74,7 @@ def display_password_list(window, location):
         display_line(window, password, location)
 
     # display blank line
+    display_line(window, "", location)
 
 #   choose password
     return password_list[7]
