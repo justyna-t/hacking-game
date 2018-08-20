@@ -81,9 +81,7 @@ def display_password_list(window, location):
     # - window is the Window to display in
     # - location is a list containing the int x and y coords of where the first
     # password should be displayed and it should be updated for the next output
-    password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
-                     "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
-                     "OVERLAP", "FINDING", "PUTTING"]
+    password_list = create_password_list()
     size = 20
     for password in password_list:
         password = embed_password(password, size)
