@@ -67,16 +67,15 @@ def display_password_list(window, location):
     password_list = ["PROVIDE", "SETTING", "CANTINA", "CUTTING", "HUNTERS",
                      "SURVIVE", "HEARING", "HUNTING", "REALIZE", "NOTHING",
                      "OVERLAP", "FINDING", "PUTTING", ""]
-    # need to change into: for password in password_list
-        # embed password
-        # display password line
+    size = 20
     for password in password_list:
+        password = embed_password(password, size)
         display_line(window, password, location)
 
     # display blank line
     display_line(window, "", location)
 
-#   choose password
+    # choose password
     return password_list[7]
 
 
