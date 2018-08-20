@@ -11,6 +11,7 @@
 # Documentation for uagame is in file 'uagame_documentation.txt'
 from uagame import Window
 from time import sleep
+from random import randint, choice
 
 
 def main():
@@ -71,19 +72,28 @@ def display_password_list(window, location):
         # display password line
     for password in password_list:
         display_line(window, password, location)
+
     # display blank line
 
 #   choose password
     return password_list[7]
 
 
-# embed password
-    # compute random split index
-    # for index in range before split index
-        # concatenate random char to embedded password
-    # concatenate password to embedded password
-    # for index in range after split index
-        # concatenate random char to embedded password
+def embed_password(password, size):
+    # Return a fixed length string with the password embedded somewhere in the
+    # string and padded with symbol characters
+    # - password is the str to pad
+    # - size is the int number of characters in the padded
+    fill = '!@#$%^*()-+=~[]{}'
+    embedding = ""
+    password_size = len(password)
+    split_index = randint(0, size - password_size)
+    for index in range(split_index):
+        embedding += choice(fill)
+    embedding += password
+    for index in range(split_index + password_size, size):
+        embedding += choice(fill)
+    return embedding
 
 
 def get_guesses(window, password, location, attempts_left):
