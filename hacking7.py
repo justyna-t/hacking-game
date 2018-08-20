@@ -76,7 +76,7 @@ def display_password_list(window, location):
     display_line(window, "", location)
 
     # choose password
-    return password_list[7]
+    return choice(password_list)
 
 
 def embed_password(password, size):
