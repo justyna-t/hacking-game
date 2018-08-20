@@ -109,12 +109,13 @@ def get_guesses(window, password, location, attempts_left):
     prompt = "ENTER PASSWORD >"
     guess = prompt_user(window, prompt, location)
     attempts_left -= 1
-
+    hint_x = window.get_width() // 2
+    hint_location = [hint_x, 0]
     while guess != password and attempts_left > 0:
         # get next guess
         window.draw_string(str(attempts_left), 0, window.get_font_height())
-
         check_warning(window, attempts_left)
+        display_hint(window, password, guess, hint_location)
         guess = prompt_user(window, prompt, location)
         attempts_left -= 1
     return guess
@@ -142,6 +143,26 @@ def check_warning(window, attempts_left):
         x = window.get_width() - window.get_string_width(message)
         y = window.get_height() - window.get_font_height()
         window.draw_string(message, x, y)
+
+
+def display_hint(window, password, guess, location):
+    # Display the game hint after an incorrect password is entered and return
+    # the location of the line below the displayed hint.
+    # - window is the Window to display in
+    # - password is the str correct password
+    # - guess is the player's guess str
+    # - location is a tuple containing the int x and int y coords of where the
+    # hint should be displayed and it should be updated to one "line" below
+    # the top left corner of the displayed hint
+    index = 0
+    correct = 0
+    for letter in guess:
+        if index < len(password) and letter == password[index]:
+            correct += 1
+        index += 1
+    hint = "%d/7 IN MATCHING POSITIONS" % correct
+    display_line(window, guess + " INCORRECT", location)
+    display_line(window, hint, location)
 
 
 def end_game(window, guess, password):
